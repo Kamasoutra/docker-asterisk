@@ -2,12 +2,11 @@ FROM alpine:latest
 
 LABEL maintainer="Jean-Pierre Palik - kama@palik.fr" \
       description="Simple preconfigured Asterisk container for tests" \
-      version="1.1"
+      version="1.2"
 
 RUN apk add --update asterisk asterisk-speex asterisk-sample-config asterisk-curl asterisk-srtp asterisk-sounds-en asterisk-sounds-moh
 
-ADD ./users.conf /tmp/users.conf && \
-    ./extensions.conf /tmp/extensions.conf
+COPY *.conf /tmp/
 
 RUN cat /tmp/users.conf >> /etc/asterisk/users.conf && \
     cat /tmp/extensions.conf >> /etc/asterisk/extensions.conf && \
