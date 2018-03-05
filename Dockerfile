@@ -6,8 +6,8 @@ LABEL maintainer="Jean-Pierre Palik - kama@palik.fr" \
 
 RUN apk add --update asterisk asterisk-speex asterisk-sample-config asterisk-curl asterisk-srtp asterisk-sounds-en asterisk-sounds-moh
 
-ADD users.conf /tmp/users.conf && \
-    extensions.conf /tmp/extensions.conf
+ADD ./users.conf /tmp/users.conf && \
+    ./extensions.conf /tmp/extensions.conf
 
 RUN cat /tmp/users.conf >> /etc/asterisk/users.conf && \
     cat /tmp/extensions.conf >> /etc/asterisk/extensions.conf && \
